@@ -1,0 +1,31 @@
+{%extends "paginas/base.html"%}
+{%block custom_css%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilo.css'%}">
+{%endblock%}
+{% block title %}Inicio Sesion{% endblock %}
+{% block content %}
+<h1>NOMBRE DE LA EMPRESA</h1>
+    <p class="p">SISTEMA DE REGISTRO Y LOGIN CON DETECCION Y RECONOCIMIENTO FACIAL</p>
+    <div>        
+        <form action="inicio" method="post">          
+                        
+            <ul class="r">
+            <li class="i"><a class="r" href="{% url 'registro'%}">Registrarse</a></li>
+            
+            </ul>
+            <ul>
+                {% csrf_token %}
+                {{ form }} 
+                
+            </ul>
+            <ul><button type="submit" id="submit" >Iniciar Sesion</button></ul>
+           
+            <ul>
+                <h2>{{error}}</h2>
+            </ul>
+                 
+         
+        </form>
+    </div>
+{% endblock %}

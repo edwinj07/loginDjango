@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title></title>
+</head>
+<body>
+    {% block custom_css%}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/estilo.css' %}">
+    {% endblock %}
+    {% block menu %}
+      <ul class="r">
+        <li class="li">
+            <a class="i" href="{% url 'home'%}">home</a>
+        </li>
+    {% if user.is_authenticated %}
+    <ul class="li">
+        <li class="li" >
+            <a class="i" href="{% url 'cerrar' %}">logout</a>
+                       
+        </li>
+        <li class="li">
+            <a class="i" href="{% url 'usuario' %}">Usuario</a> 
+        </li>
+        
+    </ul>   
+    {% else %}
+    <li class="li" >
+        <a class="i" href="{% url 'registro'%}">Signup</a>
+    </li>
+    <li class="li" >
+        <a class="i" href="{% url 'inicio' %}">Signin</a>
+    </li>
+
+    {% endif %}
+    </ul>
+    {% endblock %}
+    {% block content %}
+    
+    {% endblock %}
+    {% if menssages %}
+        {% for m in menssages %}
+        <div class="{{message.tags}}">
+            {{m}}
+        </div>
+        {% endfor %}
+    
+    {%  endif  %}
+  
+
+  
+    
+    
+</body>
+</html>

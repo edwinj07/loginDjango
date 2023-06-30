@@ -1,0 +1,23 @@
+{% extends "paginas/base.html"%}
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+{% endblock %}
+{% block title %}Perfil Usuario{% endblock %}
+
+{% block content %}
+
+    <div>
+        <form action="" enctype="multipart/form-data" method="post">
+        <h3>Informacion Personal</h3>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h2>{{error}}</h2>
+        <button>Guardar</button>
+        </form>
+    </div>
+    
+
+
+
+{% endblock %}

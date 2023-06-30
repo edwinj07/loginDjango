@@ -1,0 +1,29 @@
+{% extends "paginas/base.html" %}
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+{% endblock %}
+{% block title %}Solucion{% endblock %}
+{% block content%}
+<h1>Perfil</h1>
+<li><a class="el" href="{% url 'solucion'%}">atras</a></li>
+{% for item in persona1 %}
+<div class="us">
+    <header>
+        <img class="ef" src="{{ item.foto.url}}" alt="">
+    </header>
+    <ul class="pe" >
+        <li><h2 class="ti" >{{item.user}}</h2></li>
+        <li><h2 class="ti" >{{item.nombres}}</h2></li>
+        <li><h2 class="ti" >{{item.apellidos}}</h2></li>
+        <li><h2 class="ti" >{{item.cc}}</h2></li>
+        <a class="bt"href="{% url 'editar_perfil' item.cc %}">Editar</a>
+        <a class="bt" href="{% url 'eliminar_perfil' item.cc %}">elimiar</a></li>
+    </ul>
+    
+</div>
+
+{% endfor %}
+
+
+{% endblock %}
